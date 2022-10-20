@@ -16,6 +16,10 @@ module.exports.prep = () => {
   
   module.exports.cpa = function () {
     return new Promise((resolve, reject) => {
+      var cpaStudents = [];
+      cpaStudents = students.filter((cpa) =>{
+        return cpa.program == "CPA";
+      })
       if (students.length == 0) {
         reject('No Results Returned');
       }
