@@ -80,7 +80,7 @@ app.get('/highGPA', (req, res) => {
       .addStudent(req.body)
       .then(res.redirect('/allStudents'))
       .catch(function (err) {
-        res.json({ message: err });
+        res.json("Why");
       });
   });
 
