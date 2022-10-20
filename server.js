@@ -42,7 +42,7 @@ app.get("/allStudents", (req,res)=>{
     })
     .catch((err)=>{
         res.json({message:err});
-    }
+    })
 });
 
 app.get("/CPA", (req, res) => {
