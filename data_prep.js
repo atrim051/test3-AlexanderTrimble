@@ -56,3 +56,13 @@ module.exports.addStudent = function (studentData) {
     );
     });
   };
+
+  module.exports.getStudent = (num) => {
+    return new Promise((resolve, reject) => {
+      var stuByID = students.filter((student) =>{
+        return student.id == num; 
+      });
+      if (stuByID.length == 0) reject('No Student by this status found!');
+      else resolve(stuByID);
+    });
+  };

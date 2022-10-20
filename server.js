@@ -55,6 +55,17 @@ app.get("/allStudents", (req, res) => {
         })
 });
 
+app.get("/student/:value", (req, res) => {
+    data
+    .getStudent(req.params.value)
+    .then((data) => {
+      res.json(data);
+    })
+    .catch((err) => {
+      res.json({ message: err });
+    });
+  });
+
 app.get("/CPA", (req, res) => {
     data
         .cpa()
@@ -87,6 +98,9 @@ app.post("/addStudent", (req, res) => {
         });
 });
 
+app.use(function (req, res) {
+    res.status(404).send('Page Not Found');
+  });
 
 data
     .prep()
