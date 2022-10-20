@@ -47,3 +47,13 @@ module.exports.allStudents = () => {
     resolve(students);
   });
 };
+
+module.exports.addStudent = function (studentData) {
+  return new Promise((resolve, reject) => {
+
+    studentData.push(employeeData);
+    resolve(
+      `Employee #${studentData.id} has been added successfully!`
+      );
+    });
+  };
