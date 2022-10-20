@@ -9,24 +9,28 @@ other source
 *
 * Your app’s URL (from Cyclic) :https://odd-ruby-antelope-toga.cyclic.app/
 *
-*************************************************************************/ 
+*************************************************************************/
 
 var HTTP_PORT = process.env.PORT || 8080;
 var express = require("express");
 var app = express();
 var path = require("path");
 var data = require("./data_prep.js");
-const multer = require("multer"); 
-const fs = require('fs');
+const multer = require("multer");
 const bodyParser = require('body-parser');
 const upload = multer({ storage: storage });
-app.usapp.use(bodyParser.urlencoded({ extended: true }));e(express.json());
+app.usapp.use(bodyParser.urlencoded({ extended: true })); e(express.json());
 app.use(express.static('test3_views'));
 function onHTTPStart() {
     console.log('Express http server listening on: ' + HTTP_PORT);
-  }
+}
 
-
+const storage = multer.diskStorage({
+    destination: "./data/added",
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + path.extname(file.originalname));
+    },
+});
 // setup a 'route' to listen on the default url path
 app.get("/", (req, res) => {
     var resTxt = `<h2>Declaration</h2><p>I acknowledge the College's academic integrity policy - and my own integrity - remain in 
@@ -41,60 +45,60 @@ app.get("/", (req, res) => {
     res.send(resTxt);
 });
 
-app.get("/addStudent",(req,res)=>{
+app.get("/addStudent", (req, res) => {
     res.sendFile(path.join(__dirname, "/test3_views/addStudent.html"));
 });
 
 
-app.get("/allStudents", (req,res)=>{
+app.get("/allStudents", (req, res) => {
     data
-    .allStudents()
-    .then((data)=>{
-        res.json(data);
-    })
-    .catch((err)=>{
-        res.json({message:err});
-    })
+        .allStudents()
+        .then((data) => {
+            res.json(data);
+        })
+        .catch((err) => {
+            res.json({ message: err });
+        })
 });
 
 app.get("/CPA", (req, res) => {
     data
-      .cpa()
-      .then((data) => {
-        res.json(data);
-      })
-      .catch((err) => {
-        res.json("ERROR");
-      });
+        .cpa()
+        .then((data) => {
+            res.json(data);
+        })
+        .catch((err) => {
+            res.json("ERROR");
+        });
 });
 
 app.get('/highGPA', (req, res) => {
     data
-      .highGPA()
-      .then((data) => {
-        res.json(data);
-      })
-      .catch((err) => {
-        res.json("ERROR");
-      });
-  });
+        .highGPA()
+        .then((data) => {
+            res.json(data);
+        })
+        .catch((err) => {
+            res.json("ERROR");
+        });
+});
 
 
-  app.post("/addStudent", upload.single('student'), (req, res) => {
+app.post("/addStudent", upload.single('student'), (req, res) => {
     data
-      .addStudent(req.body)
-      .then(res.redirect('/allStudents'))
-      .catch(function (err) {
-        res.json("ERROR");
-      });
-  });
+        .addStudent(req.body)
+        .then(res.redirect('/allStudents'))
+        .catch(function (err) {
+            res.json("ERROR");
+        });
+});
 
 
 data
-  .prep()
-  .then(function () {
-    app.listen(HTTP_PORT, onHTTPStart);
-  })
-  .catch(function (err) {
-    console.log('No Data. Failed to start.' + err);
-  });
+    .prep()
+    .then(function () {
+        app.listen(HTTP_PORT, onHTTPStart);
+    })
+    .catch(function (err) {
+        console.log('No Data. Failed to start.' + err);
+    });
