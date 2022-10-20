@@ -56,13 +56,15 @@ app.get("/allStudents", (req, res) => {
 });
 
 app.get("/student/:value", (req, res) => {
-    var resTxt2 = `<h2>The Student Information</h2>
-    <p>Student id: ${data}</p>
+    var resTxt = `<h2>The Student Information</h2>
+    <p>Student id: ${res.json(data)}</p>
     <p><a href=/allStudents>Show All Students</a></p>
     <p><a href=/>Go Home</a></p>`
     data
     .getStudent(req.params.value)
-    .then(res.send(resTxt2))
+    .then((data) => {
+      res.json(data);
+    })
     .catch((err) => {
       res.json({ message: err });
     });
