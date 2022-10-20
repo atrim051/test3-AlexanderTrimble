@@ -7,7 +7,7 @@ other source
 *
 * Name: Alexander Trimble Student ID: 144365160 Date: 2022-10-02
 *
-* Your app’s URL (from Heroku) :https://pure-atoll-01521.herokuapp.com/
+* Your app’s URL (from Cyclic) :https://odd-ruby-antelope-toga.cyclic.app/
 *
 *************************************************************************/ 
 
