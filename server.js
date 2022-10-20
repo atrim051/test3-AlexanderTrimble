@@ -1,5 +1,5 @@
 /*************************************************************************
-* WEB322– Test 2
+* WEB322– Test 3
 * I declare that this assignment is my own work in accordance with Seneca Academic
 Policy. No part * of this assignment has been copied manually or electronically from any
 other source
@@ -90,9 +90,14 @@ app.get('/highGPA', (req, res) => {
 
 
 app.post("/addStudent", (req, res) => {
+    var resTxt = `<h2>The New Student Information</h2>
+    <p>Student id: ${data.stuID}</p>
+    <p><a href=/allStudents>Show All Students</a></p>
+    <p><a href=/>Go Home</a></p>`
+    
     data
         .addStudent(req.body)
-        .then(res.redirect('/allStudents'))
+        .then(res.send(resTxt))
         .catch(function (err) {
             res.json("ERROR");
         });
