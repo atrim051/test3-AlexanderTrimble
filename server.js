@@ -30,8 +30,14 @@ app.get("/", (req, res) => {
     <p>Name: <mark>Alexander Trimble</mark></p>
     <p>Student Number: <mark>144365160</mark>
     <p><a href=/CPA>Click to vist CPA Students</a></p>
-    <p><a href=/highGPA>Click to see who has the highest GPA</a></p>`
+    <p><a href=/highGPA>Click to see who has the highest GPA</a></p>
+    <p><a href=/allStudents>Click to see all students</a></p>
+    <p><a href=/addStudent>Click to add a student</a></p>`
     res.send(resTxt);
+});
+
+app.get("/addStudent",(req,res)=>{
+    res.sendFile(path.join(__dirname, "/test3_views/addStudent.html"));
 });
 
 app.get("/allStudents", (req,res)=>{
