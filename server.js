@@ -16,10 +16,10 @@ var express = require("express");
 var app = express();
 var path = require("path");
 var data = require("./data_prep.js");
-const multer = require("multer");
-const bodyParser = require('body-parser');
-const upload = multer({ storage: storage });
-app.usapp.use(bodyParser.urlencoded({ extended: true })); e(express.json());
+
+
+
+
 app.use(express.static('test3_views'));
 function onHTTPStart() {
     console.log('Express http server listening on: ' + HTTP_PORT);
