@@ -38,7 +38,7 @@ app.get("/allStudents", (req,res)=>{
     data
     .allStudents()
     .then((data)=>{
-        res.jason(data);
+        res.json(data);
     })
     .catch((err)=>{
         res.json({message:err});
