@@ -16,7 +16,12 @@ var express = require("express");
 var app = express();
 var path = require("path");
 var data = require("./data_prep.js");
-
+const multer = require("multer"); 
+const fs = require('fs');
+const bodyParser = require('body-parser');
+const upload = multer({ storage: storage });
+app.usapp.use(bodyParser.urlencoded({ extended: true }));e(express.json());
+app.use(express.static('test3_views'));
 function onHTTPStart() {
     console.log('Express http server listening on: ' + HTTP_PORT);
   }
@@ -75,7 +80,7 @@ app.get('/highGPA', (req, res) => {
   });
 
 
-  app.post("/addStudent", async (req, res) => {
+  app.post("/addStudent", upload.single('student'), (req, res) => {
     data
       .addStudent(req.body)
       .then(res.redirect('/allStudents'))

@@ -52,7 +52,7 @@ module.exports.addStudent = function (studentData) {
   return new Promise((resolve, reject) => {
     students.push(studentData);
     resolve(
-      `<h1>The New Student Information</h1>`
+      studentData
     );
     });
   };
