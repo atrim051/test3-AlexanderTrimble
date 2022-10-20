@@ -25,12 +25,6 @@ function onHTTPStart() {
     console.log('Express http server listening on: ' + HTTP_PORT);
 }
 
-const storage = multer.diskStorage({
-    destination: "./data/added",
-    filename: function (req, file, cb) {
-        cb(null, Date.now() + path.extname(file.originalname));
-    },
-});
 // setup a 'route' to listen on the default url path
 app.get("/", (req, res) => {
     var resTxt = `<h2>Declaration</h2><p>I acknowledge the College's academic integrity policy - and my own integrity - remain in 
@@ -84,7 +78,7 @@ app.get('/highGPA', (req, res) => {
 });
 
 
-app.post("/addStudent", upload.single('student'), (req, res) => {
+app.post("/addStudent", (req, res) => {
     data
         .addStudent(req.body)
         .then(res.redirect('/allStudents'))
