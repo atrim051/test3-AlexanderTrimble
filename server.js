@@ -16,8 +16,8 @@ var express = require("express");
 var app = express();
 var path = require("path");
 var data = require("./data_prep.js");
-
-
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
 
