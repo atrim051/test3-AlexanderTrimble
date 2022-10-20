@@ -57,7 +57,7 @@ app.get("/allStudents", (req, res) => {
 
 app.get("/student/:value", (req, res) => {
     var resTxt2 = `<h2>The Student Information</h2>
-    <p>Student id: ${res.json(data)}</p>
+    <p>Student id: ${data}</p>
     <p><a href=/allStudents>Show All Students</a></p>
     <p><a href=/>Go Home</a></p>`
     data
