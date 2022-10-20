@@ -20,7 +20,7 @@ var data = require("./data_prep.js");
 
 
 
-app.use(express.static('test3_views'));
+
 function onHTTPStart() {
     console.log('Express http server listening on: ' + HTTP_PORT);
 }
