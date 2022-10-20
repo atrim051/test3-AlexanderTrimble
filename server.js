@@ -75,7 +75,7 @@ app.get('/highGPA', (req, res) => {
   });
 
 
-  app.post('/addStudent', (req, res) => {
+  app.post("/addStudent", (req, res) => {
     data
       .addStudent(req.body)
       .then(res.redirect('/allStudents'))
