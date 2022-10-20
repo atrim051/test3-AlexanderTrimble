@@ -3,52 +3,47 @@ const { resolve } = require('path');
 let students = [];
 
 module.exports.prep = () => {
-    return new Promise((resolve, reject) => {
-      fs.readFile('./data/students.json', (err, data) => {
-        if (err) {
-          reject("unable to read file");
-        }
-        students = JSON.parse(data);
-        resolve();
-      });
-    });
-  };
-  
-  module.exports.cpa = function () {
-    return new Promise((resolve, reject) => {
-      var cpaStudents = [];
-      cpaStudents = students.filter((cpa) =>{
-        return cpa.program == "CPA";
-      })
-      if (students.length == 0) {
-        reject('No Results Returned');
+  return new Promise((resolve, reject) => {
+    fs.readFile('./data/students.json', (err, data) => {
+      if (err) {
+        reject("unable to read file");
       }
-      resolve(students);
+      students = JSON.parse(data);
+      resolve();
     });
-  };
-  
-  module.exports.highGPA = function () {
-    return new Promise((resolve, reject) => {
-        let highestGPA;
-        if (students.length == 0) {
-          reject('No Results Returned');
-        }
-        for (let i = 0; i < students.length; i++){
-            for (let j = i + 1; j < students.length; j++) {
-                if (students[j].gpa > students[i].gpa){
-                    highestGPA = students[j];
-                }
-            }
-        }
-        resolve(highestGPA);
-      });
-    };
+  });
+};
 
-    module.exports.allStudents = () =>{
-      return new Promise((resolve, reject) => {
-        if (students.length == 0) {
-          reject('No Results Returned');
+module.exports.cpa = function () {
+  return new Promise((resolve, reject) => {
+    let results = students.filter(student => student.program == "CPA");
+    (results.length == 0) ? reject("No CPA students.") : resolve(results);
+  });
+};
+
+module.exports.highGPA = function () {
+  return new Promise((resolve, reject)=>{
+    let high = 0;
+    let highStudent;
+    
+    for (let i=0; i<students.length; i++)
+    {
+        //console.log(students[i].gpa, high);
+        if (students[i].gpa > high)
+        {
+            high = students[i].gpa;
+            highStudent = students[i];
         }
-        resolve(students);
-      });
-    };
+    }
+    (highStudent) ? resolve(highStudent): reject("Failed finding student with highest GPA");
+}); 
+};
+
+module.exports.allStudents = () => {
+  return new Promise((resolve, reject) => {
+    if (students.length == 0) {
+      reject('No Results Returned');
+    }
+    resolve(students);
+  });
+};
