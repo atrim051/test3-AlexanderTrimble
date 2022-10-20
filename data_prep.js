@@ -51,8 +51,6 @@ module.exports.allStudents = () => {
 module.exports.addStudent = function (studentData) {
   return new Promise((resolve, reject) => {
     students.push(studentData);
-    resolve(
-      `Student ${studentData.id} has been added successfully!`
-      );
+    resolve(studentData);
     });
   };
