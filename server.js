@@ -40,14 +40,6 @@ app.get("/addStudent",(req,res)=>{
     res.sendFile(path.join(__dirname, "/test3_views/addStudent.html"));
 });
 
-app.post('/addStudent', (req, res) => {
-    data
-      .addStudent(req.body)
-      .then(res.redirect('/allStudents'))
-      .catch(function (err) {
-        res.json({ message: err });
-      });
-  });
 
 app.get("/allStudents", (req,res)=>{
     data
@@ -81,6 +73,17 @@ app.get('/highGPA', (req, res) => {
         res.json("ERROR");
       });
   });
+
+
+  app.post('/addStudent', (req, res) => {
+    data
+      .addStudent(req.body)
+      .then(res.redirect('/allStudents'))
+      .catch(function (err) {
+        res.json({ message: err });
+      });
+  });
+
 
 data
   .prep()
