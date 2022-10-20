@@ -56,11 +56,13 @@ app.get("/allStudents", (req, res) => {
 });
 
 app.get("/student/:value", (req, res) => {
+    var resTxt2 = `<h2>The Student Information</h2>
+    <p>Student id: ${res.json(data)}</p>
+    <p><a href=/allStudents>Show All Students</a></p>
+    <p><a href=/>Go Home</a></p>`
     data
     .getStudent(req.params.value)
-    .then((data) => {
-      res.json(data);
-    })
+    .then(res.send(resTxt2))
     .catch((err) => {
       res.json({ message: err });
     });
@@ -90,14 +92,14 @@ app.get('/highGPA', (req, res) => {
 
 
 app.post("/addStudent", (req, res) => {
-    var resTxt = `<h2>The New Student Information</h2>
+    var resTxt1 = `<h2>The New Student Information</h2>
     <p>Student id: ${data.stuID}</p>
     <p><a href=/allStudents>Show All Students</a></p>
     <p><a href=/>Go Home</a></p>`
     
     data
         .addStudent(req.body)
-        .then(res.send(resTxt))
+        .then(res.send(resTxt1))
         .catch(function (err) {
             res.json("ERROR");
         });
