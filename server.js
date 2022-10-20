@@ -40,7 +40,7 @@ app.get("/addStudent",(req,res)=>{
     res.sendFile(path.join(__dirname, "/test3_views/addStudent.html"));
 });
 
-app.post('/employees/add', (req, res) => {
+app.post('/addStudent', (req, res) => {
     data
       .addStudent(req.body)
       .then(res.redirect('/allStudents'))
