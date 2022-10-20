@@ -39,3 +39,12 @@ module.exports.prep = () => {
         resolve(highestGPA);
       });
     };
+
+    module.exports.allStudents = () =>{
+      return new Promise((resolve, reject) => {
+        if (students.length == 0) {
+          reject('No Results Returned');
+        }
+        resolve(students);
+      });
+    };

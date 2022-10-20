@@ -34,6 +34,17 @@ app.get("/", (req, res) => {
     res.send(resTxt);
 });
 
+app.get("/allStudents", (req,res)=>{
+    data
+    .allStudents()
+    .then((data)=>{
+        res.jason(data);
+    })
+    .catch((err)=>{
+        res.json({message:err});
+    }
+});
+
 app.get("/CPA", (req, res) => {
     data
       .cpa()
