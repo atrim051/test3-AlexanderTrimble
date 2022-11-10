@@ -171,3 +171,4 @@ exports.getStudent = (studId)=>{
         reject("No result found!");
 
     })
+}
