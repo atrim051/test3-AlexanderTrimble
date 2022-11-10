@@ -18,7 +18,9 @@ var path = require("path");
 var data = require("./data_prep.js");
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
-
+const exphbs = require('express-handlebars');
+app.engine('.hbs', exphbs.engine({ extname: '.hbs' }));
+app.set('view engine', '.hbs');
 
 
 function onHTTPStart() {
@@ -27,16 +29,17 @@ function onHTTPStart() {
 
 // setup a 'route' to listen on the default url path
 app.get("/", (req, res) => {
-    var resTxt = `<h2>Declaration</h2><p>I acknowledge the College's academic integrity policy - and my own integrity - remain in 
-    effect whether my work is done remotely or onsite. Any test or assignmnet is an act of trust between me and my instructor, and 
-    especially with my classmates... even when no one is watching. I declare I will not break that trust </p>
-    <p>Name: <mark>Alexander Trimble</mark></p>
-    <p>Student Number: <mark>144365160</mark>
-    <p><a href=/CPA>Click to vist CPA Students</a></p>
-    <p><a href=/highGPA>Click to see who has the highest GPA</a></p>
-    <p><a href=/allStudents>Click to see all students</a></p>
-    <p><a href=/addStudent>Click to add a student</a></p>`
-    res.send(resTxt);
+    // var resTxt = `<h2>Declaration</h2><p>I acknowledge the College's academic integrity policy - and my own integrity - remain in 
+    // effect whether my work is done remotely or onsite. Any test or assignmnet is an act of trust between me and my instructor, and 
+    // especially with my classmates... even when no one is watching. I declare I will not break that trust </p>
+    // <p>Name: <mark>Alexander Trimble</mark></p>
+    // <p>Student Number: <mark>144365160</mark>
+    // <p><a href=/CPA>Click to vist CPA Students</a></p>
+    // <p><a href=/highGPA>Click to see who has the highest GPA</a></p>
+    // <p><a href=/allStudents>Click to see all students</a></p>
+    // <p><a href=/addStudent>Click to add a student</a></p>`
+    // res.send(resTxt);
+    res.render('main');
 });
 
 app.get("/addStudent", (req, res) => {
