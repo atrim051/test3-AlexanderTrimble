@@ -12,7 +12,7 @@ exports.prep = ()=>{
 
             if (err) {reject("unable to read file.");}
 
-            students = JSON.parse(data);
+            //students = JSON.parse(data);
 
            // console.log(students);
 
@@ -171,4 +171,5 @@ exports.getStudent = (studId)=>{
         reject("No result found!");
 
     })
+
 }
