@@ -7,7 +7,7 @@ other source
 *
 * Name: Alexander Trimble Student ID: 144365160 Date: 2022-10-02
 *
-* Your app’s URL (from Cyclic) :https://odd-ruby-antelope-toga.cyclic.app/
+* Your app’s URL (from Cyclic) :https://git.heroku.com/dry-tundra-94944.git
 *
 *************************************************************************/
 
