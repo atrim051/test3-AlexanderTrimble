@@ -118,4 +118,4 @@ data
     })
     .catch(function (err) {
         console.log('No Data. Failed to start.' + err);
-    });
+    }); 
