@@ -18,9 +18,9 @@ var data_prep = require("./data_prep.js");
 
 var path = require("path");
 
-const exphbs = require('express-handlebars');
-app.engine('.hbs', exphbs.engine({ extname: '.hbs' }));
-app.set('view engine', '.hbs');
+// const exphbs = require('express-handlebars');
+// app.engine('.hbs', exphbs.engine({ extname: '.hbs' }));
+// app.set('view engine', '.hbs');
 
 app.use(express.json());
 
@@ -43,47 +43,47 @@ function onHttpStart()
 app.get("/",(req,res)=>{
 
 
-    res.render('main.hbs');
+    // res.render('main.hbs');
 
-    // let resText = "<h2>Declaration (text size in heading 2): </h2> ";
+    let resText = "<h2>Declaration (text size in heading 2): </h2> ";
 
-    // resText += "<p> The rest text is displayed in paragraph as shown in screenshot. </p>";
+    resText += "<p> The rest text is displayed in paragraph as shown in screenshot. </p>";
 
-    // resText += " <p> I acknowledge the College’s academic integrity policy – and my own integrity ";
+    resText += " <p> I acknowledge the College’s academic integrity policy – and my own integrity ";
 
-    // resText += "– remain in effect whether my work is done remotely or onsite.";
+    resText += "– remain in effect whether my work is done remotely or onsite.";
 
-    // resText += " Any test or assignment is an act of trust between me and my instructor, ";
+    resText += " Any test or assignment is an act of trust between me and my instructor, ";
 
-    // resText += " and especially with my classmates… even when no one is watching.";
+    resText += " and especially with my classmates… even when no one is watching.";
 
-    // resText += " I declare I will not break that trust. </p>";
+    resText += " I declare I will not break that trust. </p>";
 
-    // resText += "<p>Name: <mark> <b> highlight Your Real Name </b> </mark> </p>";
+    resText += "<p>Name: <mark> <b> highlight Your Real Name </b> </mark> </p>";
 
-    // resText += "<p>Student Number: <mark><b> highlight Your Real Student Number </b> </mark> </p>";
+    resText += "<p>Student Number: <mark><b> highlight Your Real Student Number </b> </mark> </p>";
 
     
 
-    // resText += `<ul>
+    resText += `<ul>
 
-    //             <li> <a href = "/CPA"> CPA Students </a></li>
+                <li> <a href = "/CPA"> CPA Students </a></li>
 
-    //             <li> <a href = "/highGPA"> Highest GPA </a></li>
+                <li> <a href = "/highGPA"> Highest GPA </a></li>
 
-    //             <li> <a href = "/allStudents"> All Students </a></li>
+                <li> <a href = "/allStudents"> All Students </a></li>
 
-    //             <li> <a href = "/addStudent"> Add A New Student </a></li>
+                <li> <a href = "/addStudent"> Add A New Student </a></li>
 
-    //             <li> Note: Locate specific student by student Id, e.g., <br>
+                <li> Note: Locate specific student by student Id, e.g., <br>
 
-    //              http://localhost:8080/student/3 </li>
+                 http://localhost:8080/student/3 </li>
 
-    //             `
+                `
 
 
 
-    // res.send(resText);
+    res.send(resText);
 
 });
 
